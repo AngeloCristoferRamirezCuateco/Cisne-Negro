@@ -1,0 +1,32 @@
+.btnIniciarSesion {
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: -5px -5px 10px #c9c9c9,
+        5px 5px 10px #ffffff;
+}
+
+.btnIniciarSesion:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.textInput {
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: -5px -5px 10px #c9c9c9,
+        5px 5px 10px #ffffff;
+}
+
+.chkInp{
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: -5px -5px 10px #c9c9c9,
+        5px 5px 10px #ffffff;
+}
+
+.userInput{
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: -5px -5px 10px #c9c9c9,
+        5px 5px 10px #ffffff;
+}
