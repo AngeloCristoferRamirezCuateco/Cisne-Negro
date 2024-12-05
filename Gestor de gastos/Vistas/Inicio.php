@@ -9,15 +9,22 @@ if (!$correo) {
 // Realiza la consulta para obtener el id del usuario
 $idUsuarioresult = mysqli_query($conexion, "SELECT idUsuario FROM usuarios WHERE correoUsuario = '$correo'");
 $usuarioName = mysqli_query($conexion, "SELECT (nombreUsuario) FROM usuarios WHERE correoUsuario = '$correo'");
+$completeform = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correoUsuario = '$correo'");
 if (!$idUsuarioresult || mysqli_num_rows($idUsuarioresult) == 0) {
     echo "No hay usuario";
 } else {
     // Extrae el resultado de la consulta
     $idUsuario = mysqli_fetch_assoc($idUsuarioresult);
     $username1 = mysqli_fetch_assoc($usuarioName);
+    $mailUser = mysqli_fetch_assoc($completeform);
+    $musr = $mailUser['formularioCompletado'];
     $iduser = $idUsuario['idUsuario'];
     $nameUser = $username1['nombreUsuario'];
+    if($musr == false){
+        header("Location: ../Vistas/CompleteForm.html");
+    }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -45,6 +52,7 @@ if (!$idUsuarioresult || mysqli_num_rows($idUsuarioresult) == 0) {
                 <div class="d-flex justify-content-end align-items-center">
                     <select class="form-select form-select-sm m-2" aria-label="Small select example" id="optionSession">
                         <option value="optionsSession">Opciones</option>
+                        <option value="AcountOpptions">Cuenta</option>
                         <option value="closeSession">Cerrar sesión</option>
                     </select>
                 </div>
@@ -138,7 +146,13 @@ if (!$idUsuarioresult || mysqli_num_rows($idUsuarioresult) == 0) {
 <script>
    optionSession.addEventListener("change", function() {
         if(optionSession.value == "closeSession") {
-            window.history.back();
+            <?php 
+                $_SESSION = array();    
+            ?>
+            window.location.href = "loginview.html";
+        }
+        else if(optionSession.value == "AcountOpptions"){
+            window.location.href = "AjustesCuenta.php";
         }
     });
 </script>
